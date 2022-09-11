@@ -1,7 +1,7 @@
 import Toybox.Graphics;
 import Toybox.WatchUi;
 using Toybox.System;
-using CoordinateUtils;
+using GarbageUtils;
 
 class MemoryProfileView extends WatchUi.View {
     private static var colors = [0x0000ff, 0x00ff00, 0x00ffff, 0xff0000, 0xff00ff, 0xffff00, 0xffffff];
@@ -10,16 +10,16 @@ class MemoryProfileView extends WatchUi.View {
     //! a variabele that stores some data to stress the free memory
     private var trash = [];
 
+    //! initialize with a view number
     function initialize(n as Number) {
         self.viewNo = n;
         View.initialize();
     }
 
-
     // Update the view
     function onUpdate(dc as Dc) as Void {
-        var free = CoordinateUtils.GarbageMaker.getFreeMemory();
-        var used = CoordinateUtils.GarbageMaker.getUsedMemory();
+        var free = GarbageUtils.GarbageMaker.getFreeMemory();
+        var used = GarbageUtils.GarbageMaker.getUsedMemory();
 
         var color = MemoryProfileView.colors[(self.viewNo - 1) % MemoryProfileView.colors.size()];
         dc.setColor(color, Graphics.COLOR_BLACK);
@@ -35,12 +35,9 @@ class MemoryProfileView extends WatchUi.View {
         dc.drawText(x, y, Graphics.FONT_SMALL, free + "kB free", Graphics.TEXT_JUSTIFY_CENTER);
         y += dy;
         dc.drawText(x, y, Graphics.FONT_SMALL, used + "kB used", Graphics.TEXT_JUSTIFY_CENTER);
-
-        // TODO: draw button hints
     }
 
     function addTrash(chunk) {
         self.trash.add(chunk);
-        WatchUi.requestUpdate();
     }
 }
