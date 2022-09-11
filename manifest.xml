@@ -3,6 +3,7 @@
 <iq:manifest version="3" xmlns:iq="http://www.garmin.com/xml/connectiq">
     <iq:application id="0c8ec958-5cf7-4e83-a662-4a0d2595558d" type="watch-app" name="@Strings.AppName" entry="MemoryProfileApp" launcherIcon="@Drawables.LauncherIcon" minApiLevel="1.4.0">
         <iq:products>
+            <iq:product id="approachs60"/>
             <iq:product id="fenix3"/>
             <iq:product id="fenix5"/>
             <iq:product id="fenix7"/>
@@ -15,7 +16,9 @@
             <iq:product id="vivoactive4"/>
         </iq:products>
         <iq:permissions/>
-        <iq:languages/>
+        <iq:languages>
+            <iq:language>eng</iq:language>
+        </iq:languages>
         <iq:barrels/>
     </iq:application>
 </iq:manifest>

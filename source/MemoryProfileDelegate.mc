@@ -4,8 +4,6 @@ import Toybox.WatchUi;
 class MemoryProfileDelegate extends WatchUi.BehaviorDelegate {
     //! consecutive number of the view that this delegate deals with
     private var viewNo as Lang.Number;
-    //! helper object to stress the free memory
-    private var trashMaker;
 
     //! initialize with a view number
     function initialize(n as Lang.Number) {
@@ -28,7 +26,7 @@ class MemoryProfileDelegate extends WatchUi.BehaviorDelegate {
         trashMaker.startProducingTrash();
         
         // create some "problematic" object references to see how it affects the memory
-        var app as MemoryProfileApp = getApp();
+        var app = getApp();
         if (app.CREATE_BAD_REFERENCES) {
             app.references.add(view);
         }
