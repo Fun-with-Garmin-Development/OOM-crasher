@@ -28,7 +28,7 @@ class MemoryProfileDelegate extends WatchUi.BehaviorDelegate {
         trashMaker.startProducingTrash();
         
         // create some "problematic" object references to see how it affects the memory
-        var app as MemoryProfileApp = getApp();
+        var app = getApp();
         if (app.CREATE_BAD_REFERENCES) {
             app.references.add(view);
         }

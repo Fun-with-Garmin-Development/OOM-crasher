@@ -1,17 +1,20 @@
 import Toybox.Graphics;
 import Toybox.WatchUi;
+using Toybox.Lang;
 using Toybox.System;
 using GarbageUtils;
 
 class MemoryProfileView extends WatchUi.View {
-    private static var colors = [0x0000ff, 0x00ff00, 0x00ffff, 0xff0000, 0xff00ff, 0xffff00, 0xffffff];
+    static var colors as Lang.Array<Lang.Number> = [
+        0x0000ff, 0x00ff00, 0x00ffff, 0xff0000, 0xff00ff, 0xffff00, 0xffffff
+    ];
     //! consecutive number of the view
-    private var viewNo as Number;
+    private var viewNo as Lang.Number;
     //! a variabele that stores some data to stress the free memory
     private var trash = [];
 
     //! initialize with a view number
-    function initialize(n as Number) {
+    function initialize(n as Lang.Number) {
         self.viewNo = n;
         View.initialize();
     }

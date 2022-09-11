@@ -4,12 +4,11 @@ using Toybox.Lang;
 using Toybox.Timer;
 
 module GarbageUtils {
-
     const GARBAGE_TIMER_INTEVAL = 100;
-    
+
     class GarbageMaker {
-        private static var noOfChunks as Number = 0;
-        private var currentChunk as Number = 0;
+        static var noOfChunks as Lang.Number = 0;
+        private var currentChunk as Lang.Number = 0;
         private var timer = new Timer.Timer();
 
         private var view;
