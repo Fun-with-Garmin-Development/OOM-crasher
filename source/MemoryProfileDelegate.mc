@@ -4,7 +4,7 @@ import Toybox.WatchUi;
 class MemoryProfileDelegate extends WatchUi.BehaviorDelegate {
     //! consecutive number of the view that this delegate deals with
     private var viewNo as Lang.Number;
-    //! "container" for some random data
+    //! helper object to stress the free memory
     private var trashMaker;
 
     //! initialize with a view number
