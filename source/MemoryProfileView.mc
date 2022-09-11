@@ -9,23 +9,17 @@ class MemoryProfileView extends WatchUi.View {
     private var viewNo as Number;
     //! a variabele that stores some data to stress the free memory
     private var trash = [];
-    //! helper object to stress the free memory
-    var trashMaker = new CoordinateUtils.GarbageMaker(self);
 
     function initialize(n as Number) {
         self.viewNo = n;
         View.initialize();
     }
 
-    function onLayout(dc as Dc) as Void {
-        trashMaker.startProducingTrash();
-        System.println("Some trash data created.");
-    }
 
     // Update the view
     function onUpdate(dc as Dc) as Void {
-        var free = trashMaker.getFreeMemory();
-        var used = trashMaker.getUsedMemory();
+        var free = CoordinateUtils.GarbageMaker.getFreeMemory();
+        var used = CoordinateUtils.GarbageMaker.getUsedMemory();
 
         var color = MemoryProfileView.colors[(self.viewNo - 1) % MemoryProfileView.colors.size()];
         dc.setColor(color, Graphics.COLOR_BLACK);

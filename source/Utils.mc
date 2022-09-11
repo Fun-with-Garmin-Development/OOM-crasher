@@ -127,12 +127,17 @@ module CoordinateUtils {
                 self.view.addTrash(createPortionOfTrash(1000));
             } else {
                 System.println("timer stopped");
-                self.timer.stop();
+                self.stopProducingTrash();
                 self.view = null;
             }
         }
+
         function startProducingTrash() {
             self.timer.start(method(:timerCallback), GARBAGE_TIMER_INTEVAL, true);
+        }
+
+        function stopProducingTrash() {
+            self.timer.stop();
         }
 
         static function getFreeMemory() as Lang.Number {
