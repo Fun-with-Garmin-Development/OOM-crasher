@@ -2,17 +2,12 @@ import Toybox.Application;
 import Toybox.Lang;
 import Toybox.WatchUi;
 import Toybox.StringUtil;
-using CoordinateUtils;
 
 class MemoryProfileApp extends Application.AppBase {
     //! if set to true, the app will create references to views that prevent the "garbage collector" from freeing memory of the view objects
     const CREATE_BAD_REFERENCES = false;
-    
-    // helper objects
-    var coordinator = CoordinateUtils.Coordinator.fromDeviceSettings();
-
-    //! current number of views
-    var viewCount = 1;
+    //! references to views
+    var references as Array<View> = [];
 
     function initialize() {
         AppBase.initialize();
@@ -35,7 +30,7 @@ class MemoryProfileApp extends Application.AppBase {
     // Return the initial view of your application here
     function getInitialView() as Array<Views or InputDelegates>? {
         return (
-            [new MemoryProfileView(viewCount), new MemoryProfileDelegate(viewCount)] as Array<Views or InputDelegates>
+            [new MemoryProfileView(1), new MemoryProfileDelegate(1)] as Array<Views or InputDelegates>
         );
     }
 }
